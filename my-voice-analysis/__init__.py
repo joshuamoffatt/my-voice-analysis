@@ -247,7 +247,7 @@ def myspf0q75(m,p):
         print ("Try again the sound of the audio was not clear")
     return;
 
-def mysptotal(m,p):
+def mysptotal(m,p, debug=True):
     sound=p+"/"+m+".wav"
     sourcerun=p+"/myspsolution.praat"
     path=p+"/"
@@ -262,7 +262,9 @@ def mysptotal(m,p):
         dataset=pd.DataFrame({"number_ of_syllables":z5[0,:],"number_of_pauses":z5[1,:],"rate_of_speech":z5[2,:],"articulation_rate":z5[3,:],"speaking_duration":z5[4,:],
                           "original_duration":z5[5,:],"balance":z5[6,:],"f0_mean":z5[7,:],"f0_std":z5[8,:],"f0_median":z5[9,:],"f0_min":z5[10,:],"f0_max":z5[11,:],
                           "f0_quantile25":z5[12,:],"f0_quan75":z5[13,:]})
-        print (dataset.T)
+        if debug:
+            print (dataset.T)
+        return dataset.values
     except:
         print ("Try again the sound of the audio was not clear")
     return;
